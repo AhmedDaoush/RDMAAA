@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         }
         else
             jetSO.canJump = true;
+
         if (controller.isGrounded)
             jetSO.grounded = true;
         else

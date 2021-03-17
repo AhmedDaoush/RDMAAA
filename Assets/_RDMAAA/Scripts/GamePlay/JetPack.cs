@@ -19,6 +19,8 @@ public class JetPack : MonoBehaviour
     Rigidbody rig;
     [SerializeField]
     JetPackSO jetSO;
+    [SerializeField]
+    UIBarSO uiBar;
     void Start()
     {
         jetSO.canJet = false;
@@ -33,10 +35,13 @@ public class JetPack : MonoBehaviour
     }
     void FixedUpdate()
     {
+
         // if() jetpack butting hitted getkey space bs w 5ly eljump get key down
         //if can jump and not grounded
         if (jetSO.canJet)
+
         {
+            Debug.Log("Git");
             if (jetSO.canJump & !jetSO.grounded)
                 canJet = true;
             if (jetSO.grounded)
@@ -46,9 +51,11 @@ public class JetPack : MonoBehaviour
 
             if (canJet && jetSO.canJet && currentFeul > 0)
             {
-                rig.AddForce(Vector3.up * jetForce * Time.fixedDeltaTime, ForceMode.Acceleration);
+                Vector3 value = Vector3.up * jetForce * Time.fixedDeltaTime;
+                rig.AddForce(value, ForceMode.Acceleration);
                 currentFeul = Mathf.Max(0, currentFeul - Time.fixedDeltaTime);
                 //update current fuel in SO
+                uiBar.Value = currentFeul;
             }
         }
 

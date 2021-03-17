@@ -18,4 +18,5 @@ MonoBehaviour:
   leftCode: 97
   jumpCode: 32
   switchCode: 323
-  abilityCode: 323
+  jetCode: 271
+  timeCode: 0
