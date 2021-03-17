@@ -1,10 +1,17 @@
 using UnityEngine;
 
-
-public class InteractableObject : MonoBehaviour, IInteractable
+public enum InteractionType
 {
-/*    [SerializeField]
-    protected float interactionRadius = 3f;*/
+    Once,
+    Multiple
+}
+
+public abstract class InteractableObject : MonoBehaviour, IInteractable
+{
+    [SerializeField]
+    protected InteractionType interactionType;
+    [SerializeField]
+    protected bool canInteract = true;
 
     public void Interact()
     {
