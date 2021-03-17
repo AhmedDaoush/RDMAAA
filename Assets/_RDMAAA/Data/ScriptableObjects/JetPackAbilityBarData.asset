@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e778a47182830ab4eb30029361da585b, type: 3}
-  m_Name: JetbackAbilityBarData
+  m_Name: JetPackAbilityBarData
   m_EditorClassIdentifier: 
-  ValueChanged: {fileID: 0}
-  initialValue: 0
+  ValueChanged: {fileID: 11400000, guid: 7cfb2cc08e4db3946924cd0789eb8c5c, type: 2}
+  initialValue: 100
   MaxValue: 100
