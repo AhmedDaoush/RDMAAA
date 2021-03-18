@@ -19,7 +19,7 @@ public class LabDoor : InteractableObject
     private void OnTriggerEnter(Collider other)
     {
         if (!canInteract) return;
-        if (other.CompareTag("Player")) // TODO: check player 2 tag
+        if (other.CompareTag("Player"))
         {
             Interact();
         }

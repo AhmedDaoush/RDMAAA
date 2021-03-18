@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
+    [SerializeField]
+    EventSO onSwitchPlayers;
     [SerializeField]
     public GameObject player1;
     [SerializeField]
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     Vector3 innerVelocity;
     void Start()
     {
+        player2.SetActive(false);
         rb = GetComponent<Rigidbody>();
         isGrounded = true;
         jetSO.canJump = false;
@@ -48,51 +49,43 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
-
             jetSO.grounded = true;
             // Debug.Log("Grounded");
             if (jetSO.canJump)
             {
-
-                innerVelocity += jumpForce * Vector3.up;
+                innerVelocity = jumpForce * Vector3.up;
                 // Debug.Log(rb.velocity);
                 // Debug.Log("jumppppppppppppppppp");
             }
-
         }
-
         else
         {
             jetSO.canJump = false;
             jetSO.grounded = false;
         }
         rb.velocity = innerVelocity;
-
-      
     }
 
     public void switchPlayers()
     {
         if (null != player1.gameObject && null != player2.gameObject)
         {
-            if (player1.gameObject.active == true)
-            {
-                player1.gameObject.SetActive(true);
-                player2.gameObject.SetActive(false);
-                camPlayer1.SetActive(true);
-                camPlayer2.SetActive(false);
-           
-            }
-            else
+            if (player1.gameObject.activeInHierarchy == true)
             {
                 player1.gameObject.SetActive(false);
                 player2.gameObject.SetActive(true);
                 camPlayer1.SetActive(false);
                 camPlayer2.SetActive(true);
-
             }
-           // Debug.Log("not NUll");
-
+            else
+            {
+                player1.gameObject.SetActive(true);
+                player2.gameObject.SetActive(false);
+                camPlayer1.SetActive(true);
+                camPlayer2.SetActive(false);
+            }
+            // Debug.Log("not NUll");
+            onSwitchPlayers.raise();
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -100,6 +93,8 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Collided");
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
+        if (collision.gameObject.CompareTag("Enemy"))
+            Application.Quit(); // looooooool
     }
     private void OnCollisionExit(Collision collision)
     {

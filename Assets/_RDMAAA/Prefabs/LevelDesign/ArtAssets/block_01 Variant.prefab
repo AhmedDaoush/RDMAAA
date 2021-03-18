@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &2374808158364114702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791995520008801150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1.2594421, z: 0.33333343}
+  m_Center: {x: 0, y: 0.62972105, z: 0}
 --- !u!1001 &4108562729900467793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6298a4174a2049a42914623fa786d59b, type: 3}
+--- !u!1 &791995520008801150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4735953665964335185, guid: 6298a4174a2049a42914623fa786d59b, type: 3}
+  m_PrefabInstance: {fileID: 5423679199222180655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6634086165221172732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,7 +145,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8107815545433477824, guid: d187a3594ec0d6049abf637230427c07, type: 3}
       propertyPath: m_Name
-      value: block_01 (11)
+      value: block_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8921472414223927418, guid: d187a3594ec0d6049abf637230427c07, type: 3}
       propertyPath: m_RootOrder

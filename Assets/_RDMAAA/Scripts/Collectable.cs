@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
@@ -11,6 +9,9 @@ public class Collectable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
+        {
             data.Value += increaseValue;
+            Destroy(transform.gameObject);
+        }
     }
 }

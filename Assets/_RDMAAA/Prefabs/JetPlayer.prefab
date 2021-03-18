@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 797507502507087598}
   - component: {fileID: 3239679747280871972}
   - component: {fileID: 4266089933983001338}
-  - component: {fileID: 4266089933983001280}
   - component: {fileID: 4266089933983001340}
   - component: {fileID: 4266089933983001281}
   - component: {fileID: 4266089933983001284}
@@ -107,24 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!143 &4266089933983001280
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032230063240610801}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0.74243784
-  m_Radius: 1.2242805
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &4266089933983001340
 CapsuleCollider:
   m_ObjectHideFlags: 0

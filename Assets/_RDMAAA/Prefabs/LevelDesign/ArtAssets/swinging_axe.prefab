@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7463197572742377099}
   m_Layer: 0
   m_Name: swinging_axe
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,5 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa86fcc753d4894e8c078595af8e166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeSlowSO: {fileID: 11400000, guid: 15764fb4bf5b54548876b80b26eddaa4, type: 2}
+  RotateOnZAxis: 0
   MaxAngle: 70
   Duration: 5

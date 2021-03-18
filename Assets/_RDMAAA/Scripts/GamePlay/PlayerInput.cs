@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -9,15 +6,23 @@ public class PlayerInput : MonoBehaviour
     public IInputManager inputManager;
     public Vector3SO movement;
     [SerializeField]
+    UIBarSO timeBar;
+    [SerializeField]
+    EnemySO timeSlowSO;
+    [SerializeField]
+    float timeScale = 7;
+    [SerializeField]
     bool switchPlayers;
     [SerializeField]
     bool ability;
-    CharacterController controller;
     [SerializeField]
     JetPackSO jetSO;
+    [SerializeField]
+    float timeUsage = 5;
+    float initialEnemySpeed;
+
     void Start()
     {
-        controller = GetComponent<CharacterController>();
         jetSO.canJump = false;
         jetSO.canJet = false;
         //getting abilities components
@@ -27,6 +32,7 @@ public class PlayerInput : MonoBehaviour
             // Debug.Log("nulll");
         }
         //getback button listener
+        initialEnemySpeed = timeSlowSO.EnemySpeed;
     }
 
     void Update()
@@ -55,15 +61,24 @@ public class PlayerInput : MonoBehaviour
         }
         if (inputManager.UseJetPack())
         {
-           // Debug.Log("can jet");
+            // Debug.Log("can jet");
             jetSO.canJet = true;
         }
-        if (inputManager.useTime())
+        if (inputManager.useTime() && timeBar.Value >= timeUsage * Time.deltaTime)
         {
-           ////
+            timeSlowSO.EnemySpeed = timeScale;
+            timeBar.Value -= timeUsage * Time.deltaTime;
+        }
+        else
+        {
+            ResetEnemySO();
         }
         this.movement.vector = moving;
     }
 
+    public void ResetEnemySO()
+    {
+        timeSlowSO.EnemySpeed = initialEnemySpeed;
+    }
 
 }

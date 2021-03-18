@@ -17,7 +17,7 @@ public class PeriodicEnemy : MonoBehaviour
     float t = 0;
     Vector3 StartPosition;
     Vector3 EndPosition;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartPosition = InitialStartTransform.position;
@@ -25,11 +25,11 @@ public class PeriodicEnemy : MonoBehaviour
         transform.position = StartPosition;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-            t += Time.deltaTime * Data.EnemySpeed / HalfCycleTime;
-        if(forward)
+        t += Time.deltaTime / (Data.EnemySpeed * HalfCycleTime);
+        if (forward)
         {
             if (t >= 1)
             {
@@ -39,7 +39,8 @@ public class PeriodicEnemy : MonoBehaviour
             }
             else
                 transform.position = Vector3.Lerp(StartPosition, EndPosition, t);
-        }else
+        }
+        else
         {
             if (t >= 1)
             {
