@@ -9,4 +9,5 @@ public abstract class IInputManager : ScriptableObject
     public abstract bool Jump();
     public abstract bool UseJetPack();
     public abstract bool useTime();
+    public abstract bool SwitchPlayer();
 }

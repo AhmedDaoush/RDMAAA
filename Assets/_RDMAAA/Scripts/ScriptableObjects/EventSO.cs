@@ -20,6 +20,10 @@ public class EventSO : ScriptableObject
         foreach (var listener in listeners)
         {
             listener.onEventRaised();
+            if (listeners.Count == 0) 
+            {
+                break;
+            }
         }
     }
 }

@@ -19,3 +19,4 @@ MonoBehaviour:
   jumpCode: 32
   jetCode: 102
   timeCode: 102
+  switchCode: 306

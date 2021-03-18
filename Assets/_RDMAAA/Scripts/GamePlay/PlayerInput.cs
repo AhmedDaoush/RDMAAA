@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
     public IInputManager inputManager;
     public Vector3SO movement;
     [SerializeField]
@@ -19,7 +18,14 @@ public class PlayerInput : MonoBehaviour
     JetPackSO jetSO;
     [SerializeField]
     float timeUsage = 5;
+    [SerializeField]
+    EventSO onSwitchJetPlayer;
+    [SerializeField]
+    EventSO onSwitchTimePlayer;
+    [SerializeField]
+    bool isJet = true;
     float initialEnemySpeed;
+    bool alive = true;
 
     void Start()
     {
@@ -29,7 +35,6 @@ public class PlayerInput : MonoBehaviour
         if (null == inputManager)
         {
             inputManager = new InputHandler();
-            // Debug.Log("nulll");
         }
         //getback button listener
         initialEnemySpeed = timeSlowSO.EnemySpeed;
@@ -37,6 +42,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        if (!alive) return;
         Vector3 moving = Vector3.zero;
 
         if (inputManager.GetForword())
@@ -73,12 +79,27 @@ public class PlayerInput : MonoBehaviour
         {
             ResetEnemySO();
         }
+        if (inputManager.SwitchPlayer()) 
+        {
+            if (isJet) 
+            {
+                onSwitchJetPlayer.raise();
+            }
+            else
+            {
+                onSwitchTimePlayer.raise();
+            }
+        }
         this.movement.vector = moving;
     }
 
     public void ResetEnemySO()
     {
         timeSlowSO.EnemySpeed = initialEnemySpeed;
+    }
+    public void Die()
+    {
+        alive = false;
     }
 
 }

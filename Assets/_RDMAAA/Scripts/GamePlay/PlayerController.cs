@@ -4,8 +4,6 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
-    EventSO onSwitchPlayers;
-    [SerializeField]
     public GameObject player1;
     [SerializeField]
     public GameObject player2;
@@ -27,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float speed = 10;
     Vector3 innerVelocity;
+    [SerializeField]
+    EventSO death;
     void Start()
     {
         player2.SetActive(false);
@@ -66,26 +66,24 @@ public class PlayerController : MonoBehaviour
         rb.velocity = innerVelocity;
     }
 
-    public void switchPlayers()
+    public void SwitchPlayers()
     {
         if (null != player1.gameObject && null != player2.gameObject)
         {
             if (player1.gameObject.activeInHierarchy == true)
             {
-                player1.gameObject.SetActive(false);
-                player2.gameObject.SetActive(true);
-                camPlayer1.SetActive(false);
+                player2.SetActive(true);
+                player1.SetActive(false);
                 camPlayer2.SetActive(true);
+                camPlayer1.SetActive(false);
             }
             else
             {
-                player1.gameObject.SetActive(true);
-                player2.gameObject.SetActive(false);
+                player1.SetActive(true);
                 camPlayer1.SetActive(true);
+                player2.SetActive(false);
                 camPlayer2.SetActive(false);
             }
-            // Debug.Log("not NUll");
-            onSwitchPlayers.raise();
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -94,7 +92,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
         if (collision.gameObject.CompareTag("Enemy"))
-            Application.Quit(); // looooooool
+        {
+            death.raise();
+        }
     }
     private void OnCollisionExit(Collision collision)
     {

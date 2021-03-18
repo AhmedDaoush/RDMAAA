@@ -20,7 +20,7 @@ public class LaserButton : InteractableObject
         if (script != null)
         {
             script.active = false;
-            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+            transform.parent.position = new Vector3(transform.position.x, 1, transform.position.z);
         }
         else
         {
