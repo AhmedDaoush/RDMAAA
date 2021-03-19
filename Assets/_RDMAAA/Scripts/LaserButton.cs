@@ -6,7 +6,7 @@ public class LaserButton : InteractableObject
     [SerializeField]
     PeriodicEnemy script;
     [SerializeField]
-    GameObject laser;
+    GameObject[] lasers;
 
     public new void Interact()
     {
@@ -15,7 +15,10 @@ public class LaserButton : InteractableObject
         {
             canInteract = false;
         }
-        Destroy(laser);
+        foreach (var laser in lasers)
+        {
+            Destroy(laser);
+        }
 
         if (script != null)
         {
