@@ -17,7 +17,7 @@ public class SwingingAxe : MonoBehaviour
 
     private void FixedUpdate()
     {
-        t += Time.deltaTime;
+        t += Time.fixedDeltaTime;
         if (bForward)
         {
             if (bUp)

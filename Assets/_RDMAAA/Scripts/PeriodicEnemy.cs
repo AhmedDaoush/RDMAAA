@@ -28,10 +28,10 @@ public class PeriodicEnemy : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (!active) return;
-        t += Time.deltaTime * Data.EnemySpeed / HalfCycleTime;
+        t += Time.fixedDeltaTime * Data.EnemySpeed / HalfCycleTime;
         if (forward)
         {
             if (t >= 1)
