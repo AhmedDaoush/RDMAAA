@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     EventSO death;
     void Start()
     {
-        player2.SetActive(false);
         rb = GetComponent<Rigidbody>();
         isGrounded = true;
         jetSO.canJump = false;
