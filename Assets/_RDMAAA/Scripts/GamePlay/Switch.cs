@@ -4,33 +4,45 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    //[SerializeField]
-    public GameObject player1;
-    //[SerializeField]
-    public GameObject player2;
-
-    void Start()
-    {
-        player1 = GetComponent<GameObject>();
-        player2 = GetComponent<GameObject>();
-    }
+    [SerializeField]
+    GameObject player1;
+    [SerializeField]
+    GameObject player2;
+    [SerializeField]
+    GameObject camPlayer1;
+    [SerializeField]
+    GameObject camPlayer2;
 
     public void SwitchPlayers()
     {
-        //if (player1.GetComponent<Player>().enabled == true)
-        //{
-        //    if (player1.GetComponent<PlayerInput>().enabled == true)
-        //    {
-        //        if (player1.GetComponent<PlayerController>().enabled == true)
-        //        {
-        //            player1.GetComponent<Player>().enabled = false;
-        //            player1.GetComponent<PlayerInput>().enabled = false;
-        //            player1.GetComponent<PlayerController>().enabled = false;
+        if (null != player1.gameObject && null != player2.gameObject)
+        {
+            if (player1.gameObject.activeInHierarchy == true)
+            {
+                player2.SetActive(true);
+                camPlayer2.SetActive(true);
+                StartCoroutine("swap1");
+            }
+            else
+            {
+                player1.SetActive(true);
+                camPlayer1.SetActive(true);
+                StartCoroutine("swap2");
+            }
+        }
+    }
+    IEnumerator swap1()
+    {
+        yield return new WaitForSeconds(1);
+        player1.SetActive(false);
+        camPlayer1.SetActive(false);
 
-        //        }
+    }
+    IEnumerator swap2()
+    {
+        yield return new WaitForSeconds(1);
+        camPlayer2.SetActive(false);
+        player2.SetActive(false);
 
-        //    }
-
-        //}
     }
 }

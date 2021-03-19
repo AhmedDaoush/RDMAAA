@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6769299843465647524}
   - component: {fileID: 6769299843465647531}
   - component: {fileID: 6769299843465647530}
-  - component: {fileID: 688053733671696510}
+  - component: {fileID: 4508661417518557536}
   m_Layer: 0
   m_Name: SecurityGateBeams
   m_TagString: Enemy
@@ -163,7 +163,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &688053733671696510
+--- !u!65 &4508661417518557536
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,8 +174,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8587282, y: 0, z: 1.6777482}
-  m_Center: {x: -0.15218495, y: 0, z: 1.1663767}
+  m_Size: {x: 1.8587279, y: 0, z: 1.6777482}
+  m_Center: {x: -0.15218493, y: 0, z: 1.1663767}
 --- !u!1 &6769299843680625245
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6769299843680625246}
   m_Layer: 0
   m_Name: LaserGate
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
