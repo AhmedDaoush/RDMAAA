@@ -51,7 +51,6 @@ public class JetPack : MonoBehaviour
                 }
                 //rig.AddForce(0, 0, 500);
                 uiBar.Value = Mathf.Max(0, uiBar.Value - Time.fixedDeltaTime * fuelConsumption);
-                Debug.Log(uiBar.Value);
             }
         }
 

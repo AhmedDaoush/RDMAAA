@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
     Vector3 innerVelocity;
     [SerializeField]
     EventSO death;
+    List<GameObject> grounds = new List<GameObject>();
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(grounds.Count);
         //Debug.Log(controller.isGrounded ? "GROUNDED" : "NOT GROUNDED");
         innerVelocity = movement.vector * speed;
         innerVelocity.y = rb.velocity.y;
@@ -90,7 +94,10 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Collided");
         if (collision.gameObject.CompareTag("Ground"))
+        {
             isGrounded = true;
+            grounds.Add(collision.gameObject);
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             death.Raise();
@@ -99,6 +106,16 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-            isGrounded = false;
+        {
+            grounds.Remove(collision.gameObject);
+            if (grounds.Count == 0)
+            {
+                isGrounded = false;
+            }
+        }
+    }
+    private void OnEnable()
+    {
+        grounds.Clear();
     }
 }
