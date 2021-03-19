@@ -100,6 +100,13 @@ public class PlayerController : MonoBehaviour
             death.Raise();
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            death.Raise();
+        }
+    }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
